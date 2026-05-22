@@ -1,0 +1,58 @@
+{
+  "profile": {
+    "name": "Your Name",
+    "headline": "Software Developer | Aspiring Full-Stack Engineer",
+    "location": "City, Country",
+    "linkedinUrl": "https://www.linkedin.com/in/your-profile",
+    "email": "you@email.com",
+    "photo": "assets/images/profile.jpg",
+    "summary": "Passionate developer building modern web experiences. Currently focused on front-end development, clean code, and collaborative team projects."
+  },
+  "experience": [
+    {
+      "title": "Software Engineering Intern",
+      "company": "Tech Company Inc.",
+      "period": "Jun 2025 – Aug 2025",
+      "location": "Remote",
+      "description": "Collaborated with a cross-functional team to deliver features for an internal dashboard. Wrote unit tests, participated in code reviews, and documented API endpoints.",
+      "highlights": [
+        "Built responsive UI components used by 200+ internal users",
+        "Reduced page load time by 15% through asset optimization",
+        "Presented final project to engineering leadership"
+      ]
+    },
+    {
+      "title": "Teaching Assistant",
+      "company": "University Coding Bootcamp",
+      "period": "Jan 2025 – May 2025",
+      "location": "On-site",
+      "description": "Supported instructors during live coding sessions and mentored students on HTML, CSS, JavaScript, and Git workflows.",
+      "highlights": [
+        "Mentored 30+ students weekly",
+        "Created supplementary learning materials",
+        "Facilitated peer code review sessions"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Git",
+      "Responsive Design",
+      "REST APIs"
+    ],
+    "soft": [
+      "Communication",
+      "Team Collaboration",
+      "Problem Solving",
+      "Time Management"
+    ]
+  },
+  "education": {
+    "degree": "B.S. in Computer Science",
+    "school": "Your University",
+    "year": "2026"
+  }
+}

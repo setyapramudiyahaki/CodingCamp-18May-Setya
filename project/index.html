@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal dashboard with Pomodoro timer, tasks, and quick links." />
+    <title>Personal Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <header class="header">
+        <h1 class="header__logo">Dashboard</h1>
+        <div class="header__actions">
+          <button type="button" id="btn-set-name" class="btn btn--outline btn--small">
+            Set Name
+          </button>
+          <button
+            type="button"
+            id="theme-toggle"
+            class="btn btn--icon"
+            aria-label="Toggle light or dark mode"
+            title="Toggle theme"
+          >
+            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Greeting -->
+      <section class="card card--greeting" aria-label="Greeting">
+        <p id="live-time" class="greeting__time" aria-live="polite">00:00:00</p>
+        <p id="live-date" class="greeting__date">Loading…</p>
+        <h2 id="greeting-text" class="greeting__message">Good Morning</h2>
+      </section>
+
+      <!-- Main grid: timer | todo + links -->
+      <div class="main-grid">
+        <!-- Pomodoro -->
+        <section class="card card--timer" aria-labelledby="timer-heading">
+          <h2 id="timer-heading" class="card__title">Focus Timer</h2>
+
+          <div class="timer__ring-wrap">
+            <svg class="timer__ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="timer__ring-bg" cx="60" cy="60" r="54" />
+              <circle
+                id="timer-ring-progress"
+                class="timer__ring-progress"
+                cx="60"
+                cy="60"
+                r="54"
+              />
+            </svg>
+            <p id="timer-display" class="timer__display" aria-live="polite">25:00</p>
+          </div>
+
+          <div class="timer__duration">
+            <label for="timer-minutes">Duration (min)</label>
+            <input
+              type="number"
+              id="timer-minutes"
+              min="1"
+              max="99"
+              value="25"
+              aria-label="Pomodoro duration in minutes"
+            />
+          </div>
+
+          <div class="timer__controls">
+            <button type="button" id="timer-start" class="btn btn--primary">Start</button>
+            <button type="button" id="timer-pause" class="btn btn--secondary" disabled>
+              Pause
+            </button>
+            <button type="button" id="timer-reset" class="btn btn--ghost">Reset</button>
+          </div>
+        </section>
+
+        <div class="main-grid__right">
+          <!-- To-Do -->
+          <section class="card card--todo" aria-labelledby="todo-heading">
+            <div class="card__header-row">
+              <h2 id="todo-heading" class="card__title">To-Do List</h2>
+              <label class="sort-label">
+                <span class="visually-hidden">Sort tasks</span>
+                <select id="task-sort" class="select" aria-label="Sort tasks">
+                  <option value="default">Default</option>
+                  <option value="az">A → Z</option>
+                  <option value="za">Z → A</option>
+                  <option value="done-last">Done Last</option>
+                </select>
+              </label>
+            </div>
+
+            <form id="task-form" class="todo__form">
+              <input
+                type="text"
+                id="task-input"
+                class="input"
+                placeholder="Add a new task…"
+                autocomplete="off"
+                maxlength="200"
+                aria-label="New task"
+              />
+              <button type="submit" class="btn btn--primary">Add</button>
+            </form>
+
+            <ul id="task-list" class="todo__list" role="list"></ul>
+            <p id="task-empty" class="empty-state" hidden>
+              No tasks yet. Add one above to get started.
+            </p>
+          </section>
+
+          <!-- Quick Links -->
+          <section class="card card--links" aria-labelledby="links-heading">
+            <h2 id="links-heading" class="card__title">Quick Links</h2>
+
+            <form id="link-form" class="links__form">
+              <input
+                type="text"
+                id="link-name"
+                class="input"
+                placeholder="Link name"
+                maxlength="40"
+                aria-label="Link name"
+              />
+              <input
+                type="url"
+                id="link-url"
+                class="input"
+                placeholder="https://example.com"
+                aria-label="Link URL"
+              />
+              <button type="submit" class="btn btn--primary">Add Link</button>
+            </form>
+
+            <div id="link-chips" class="links__chips" role="list"></div>
+            <p id="links-empty" class="empty-state" hidden>
+              No links saved. Add your favorite sites above.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Name modal -->
+    <dialog id="name-modal" class="modal">
+      <form method="dialog" id="name-form" class="modal__content">
+        <h3 class="modal__title">Set your name</h3>
+        <input
+          type="text"
+          id="name-input"
+          class="input"
+          placeholder="e.g. Setya"
+          maxlength="40"
+          autocomplete="name"
+        />
+        <div class="modal__actions">
+          <button type="button" id="name-cancel" class="btn btn--ghost">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
